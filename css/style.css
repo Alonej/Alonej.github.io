@@ -855,12 +855,24 @@ span.sb-caret { /* Caret Down */
 	#hero .element-img {
 		background-attachment: scroll !important
 	}
+
 	.heightblock {
 		display: none
 	}
 }
 @media (max-width:767px) {
-	#hero p {
+
+	#hero .col-xs-12 {
+		height: 400px !important; 
+
+	}
+	#hero h2{
+		display: none
+	}
+	#hero h3{
+		display: none
+	}
+	#hero p{
 		display: none
 	}
 }

@@ -923,6 +923,37 @@ svg{
 	top: 30%;
 	/* border: medium double rgb(250,0,255); */
 }
+
+@media (max-width:2000px) {
+	.svgIn{
+		height: 50px;
+		width: 50px;
+		float: left;
+		position: absolute;
+	}
+	.s1{
+		right: -35%;
+		top: 0%;
+		height: 60px;
+		width: 60px;
+	}
+	.s2{
+		left: 15%;
+		top: 15%;
+	}
+	.s3{
+		left: -5%;
+		top: 45%;
+	}
+	.s4{
+		right: -25%;
+		top: 55%;
+	}
+	.s5{
+		left: 35%;
+		top: 85%;
+	}
+}
 @media (max-width:767px) {
 	.svgIn{
 		height: 30px;
@@ -954,7 +985,6 @@ svg{
 		top: 85%;
 	}
 }
-
 .svgTree{
 	display: block;
 	position: absolute;

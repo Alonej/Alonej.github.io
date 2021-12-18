@@ -137,7 +137,6 @@ function playParticle(p){
 }
 
 function drawStar(){
-  
   starTl = gsap.timeline({onUpdate: playParticle})
   starTl.to('.pContainer, .sparkle', {
 		duration: 6,
@@ -209,6 +208,47 @@ function start(){
   // var t1 = window.setInterval(createParticles,6000);
   var t1 = window.setInterval(drawStar1,2000);
   window.setTimeout(svgInDisplay,6000);
+
+  var box = document.getElementById("s1"),
+  count = 0,
+  tween;
+
+  // 往复运动
+  tween = TweenMax.to(['.s1','.s3'], 3, {
+    y: "15%",
+    x: 5,
+    repeat: 100,
+    yoyo: true,
+    // onRepeat: onRepeat,
+    repeatDelay: 1,
+    ease: Linear.easeNone
+  });
+
+  TweenMax.to(['.s2'], 3, {
+    y: "15%",
+    x: -5,
+    repeat: 100,
+    yoyo: true,
+    // onRepeat: onRepeat,
+    repeatDelay: 3,
+    ease: Linear.easeNone
+  });
+  TweenMax.to(['.s4','.s5'], 3, {
+    y: "10%",
+    repeat: 100,
+    yoyo: true,
+    // onRepeat: onRepeat,
+    repeatDelay: 2,
+    ease: Linear.easeNone
+  });
+  // function onRepeat() {
+  //   count++;
+  //   box.innerHTML = count;
+  //   TweenLite.set(box, {
+  //     backgroundColor: "hsl(" + Math.random() * 255 + ", 90%, 60%)"
+  //   });
+  // }
+
   mainTl.from(['.treePathMask','.treePotMask'],{
     duration: 6,
     drawSVG:'0% 0%',
@@ -260,4 +300,36 @@ function svgInDisplay(){
   $(document).ready(function(){
     $('.svgIn').show();
   });
+}
+
+$(".icon").click(function(e){    
+  var list = ['皮皮呀~', '小鞠鞠~', '❤❤❤❤~~~', '爱你~', '（づ￣3￣）づ╭❤～', '嘻嘻(#^.^#)',"圣诞快乐！",
+  "要开心喔(*^▽^*)","ლ(°◕‵ƹ′◕ლ)","ʕ๑•ɷ•๑ʔ❀","❤(ε)❤","ξ( ✿＞◡❛)","ε(○´∀｀)зε(´∀｀●)з牵手手",
+  "ʕ ᵔᴥᵔ ʔ","什么时候才能花前月下呀"];
+  textUp( e, 2000, list, 200 )
+})
+// 漂浮文字
+function textUp( e, time, arr, heightUp ){
+  var lists = Math.floor(Math.random() * arr.length);
+  var colors = '#'+Math.floor(Math.random()*0xffffff).toString(16);
+  var $i = $('<span />').text( arr[lists] );
+  var xx = e.pageX || e.clientX + document.body.scroolLeft;
+  var yy = e.pageY || e.clientY + document.body.scrollTop;
+
+  $('body').append($i);
+  $i.css({
+      top: yy,
+      left: xx,
+      color: colors,
+      transform: 'translate(-50%, -50%)',
+      display: 'block',
+      position: 'absolute',
+      zIndex: 999999999999
+  })  
+  $i.animate({
+      top: yy - ( heightUp ? heightUp : 200 ),
+      opacity: 0
+  }, time, function(){
+      $i.remove();
+  })            
 }

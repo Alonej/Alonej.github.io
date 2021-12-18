@@ -67,8 +67,8 @@
 	}
 }
 body {
-	background-color: #FFFFFF;
-	background-color: rgb(255,255,255);
+	background-color: #ee1254;
+	background-color: #ee1254;
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	color: #666;
 	font-style: normal;
@@ -77,6 +77,13 @@ body {
 	line-height: 30px;
 	padding: 0px 0px;
 }
+/* body {
+  background-color:#ee1254;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+} */
 p {
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	color: #666;
@@ -154,7 +161,7 @@ h1 span {
 	top: -2px
 }
 section {
-	background-color: #fff;
+	/* background-color: #fff; */
 	position: relative;
 	padding-top: 60px;
 	z-index: 4;
@@ -938,14 +945,14 @@ svg{
 	top: 65%;
 }
 
-/* .svgTree{
+.svgTree{
 	display: block;
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-} */
+}
 .all{
 	height: 100%;
 	width: 100%;
@@ -3364,10 +3371,10 @@ footer .footer_bottom {
 	color: #fff!important;
 }
 .m-pagination a{
-	color: gray;
+	/* color: gray; */
 	padding-left: 10px;
 	padding-right: 10px;
-	border: 1px solid gray;
+	border: 1px solid white;
 	border-radius: 20px;
 	max-width: 100%;
 	text-overflow: ellipsis;

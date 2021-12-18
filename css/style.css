@@ -877,6 +877,69 @@ span.sb-caret { /* Caret Down */
 	}
 }
 /********************************************************/
+/* Love Hero                                           */
+/********************************************************/
+svg{
+	width:100%;
+	height:100%;
+	visibility:hidden;
+}
+
+.svgIn{
+	height: 30px;
+	width: 30px;
+	float: left;
+	position: absolute;
+}
+.svgBox{
+	align-items: center;
+	justify-content: center; 
+	height: 40%;
+	width: 15%;
+	position:absolute;
+	display: block;
+	float: left;
+	left: 42%;
+	top: 30%;
+	border: medium double rgb(250,0,255);
+}
+.s1{
+	left: 45%;
+	top: 20%;
+}
+.s2{
+	left: 35%;
+	top: 35%;
+}
+.s3{
+	left: 15%;
+	top: 45%;
+}
+.s4{
+	left: 55%;
+	top: 55%;
+}
+.s5{
+	left: 5%;
+	top: 65%;
+}
+
+/* .svgTree{
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+} */
+.all{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+/********************************************************/
 /* Video Hero                                           */
 /********************************************************/
 

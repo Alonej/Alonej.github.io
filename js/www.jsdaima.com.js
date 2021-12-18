@@ -298,7 +298,7 @@ function start(){
 //ScrubGSAPTimeline(mainTl)
 function svgInDisplay(){
   $(document).ready(function(){
-    $(".svgIn").fadeIn(500);
+    $(".svgIn").fadeIn(1000);
     // $('.svgIn').show();
   });
 }

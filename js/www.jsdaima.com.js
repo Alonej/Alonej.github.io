@@ -87,9 +87,6 @@ function createParticles() {
                  y:-100,
    transformOrigin:'50% 50%'
                  })
-    
-    
-
   }
 
 }
@@ -100,10 +97,10 @@ function playParticle(p){
   if(!showParticle){return};
   var p = particlePool[particleCount]
   gsap.set(p, {
-    // x: gsap.getProperty('.pContainer', 'x'),
-    // y: gsap.getProperty('.pContainer', 'y'),
-    x: gsap.getProperty('.sparkle', 'x'),
-    y: gsap.getProperty('.sparkle', 'y'),
+    x: gsap.getProperty('.pContainer', 'x'),
+    y: gsap.getProperty('.pContainer', 'y'),
+    // x: gsap.getProperty('.sparkle', 'x'),
+    // y: gsap.getProperty('.sparkle', 'y'),
     scale:getScale()
       }
   );
@@ -141,7 +138,7 @@ function playParticle(p){
 
 function drawStar(){
   
-  starTl = gsap.timeline({onUpdate:playParticle})
+  starTl = gsap.timeline({onUpdate: playParticle})
   starTl.to('.pContainer, .sparkle', {
 		duration: 6,
 		motionPath :{
@@ -167,6 +164,23 @@ function drawStar(){
   },'-=0')
    
   //gsap.staggerTo(particlePool, 2, {})
+  // createParticles()
+  var i = numParticles, p, particleTl, step = numParticles/treePath.length, pos;
+  while (--i > -1) {
+    
+    p = select(particleTypeArray[i%particleTypeArray.length]).cloneNode(true);
+    mainSVG.appendChild(p);
+    p.setAttribute('fill', particleColorArray[i % particleColorArray.length]);
+    p.setAttribute('class', "particle");   
+    particlePool.push(p);
+    //hide them initially
+    gsap.set(p, {
+                 x:-100, 
+                 y:-100,
+   transformOrigin:'50% 50%'
+                 })
+  }
+
 }
 function drawStar1(){
   starTl = gsap.timeline()
@@ -182,69 +196,68 @@ function drawStar1(){
   },'+=0')
 }
 
-//使用方法名字执行方法 只执行一次
-// var t1 = window.setTimeout(createParticles,1000);
-createParticles();
-drawStar();
-// svgInDisplay()
-var t1 = window.setInterval(drawStar,6000);
-var t1 = window.setInterval(createParticles,6000);
-var t1 = window.setInterval(drawStar1,2000);
-window.setInterval(svgInDisplay,6000);
+
+
+$(document).ready(function(){
+  start();
+  // window.setTimeout(start,6000);
+});
+
+function start(){
+  drawStar();
+  var t1 = window.setInterval(drawStar,6000);
+  // var t1 = window.setInterval(createParticles,6000);
+  var t1 = window.setInterval(drawStar1,2000);
+  window.setTimeout(svgInDisplay,6000);
+  mainTl.from(['.treePathMask','.treePotMask'],{
+    duration: 6,
+    drawSVG:'0% 0%',
+    stroke:'#FFF',
+    stagger: {
+      each: 6
+    },
+    duration: gsap.utils.wrap([6, 1,2]),
+    ease:'linear'
+    })
+    .from('.treeStar', {
+      duration: 3,
+      //skewY:270,
+      scaleY:0,
+      scaleX:0.15,
+      transformOrigin:'50% 50%',
+      ease: 'elastic(1,0.5)'
+    },'-=4')
+  .to('.sparkle', {
+    duration: 3,
+      opacity:0,
+      ease:"rough({strength: 2, points: 100, template: linear, taper: both, randomize: true, clamp: false})"
+    },'-=0')
+    .from('.treeBottomMask', {
+      duration: 2,
+      drawSVG:'0% 0%',
+      stroke:'#FFF',
+      ease:'linear',
+      stagger: {
+        each: 6
+      } 
+    },'-=3') 
+  
+    // .to('.treeStarOutline', {
+    //   duration: 2,
+    //   opacity:1,
+    //   ease:"rough({strength: 2, points: 16, template: linear, taper: none, randomize: true, clamp: false})"
+    // },'+=0')
+  
+  //  .to('.tree', {
+  //   opacity: 0
+  // }, '+=2') 
+  
+  mainTl.add(starTl, 0)
+  gsap.globalTimeline.timeScale(1.5);
+}
 //ScrubGSAPTimeline(mainTl)
 function svgInDisplay(){
   $(document).ready(function(){
     $('.svgIn').show();
   });
 }
-mainTl.from(['.treePathMask','.treePotMask'],{
-	duration: 6,
-  drawSVG:'0% 0%',
-  stroke:'#FFF',
-	stagger: {
-		each: 6
-	},
-  duration: gsap.utils.wrap([6, 1,2]),
-  ease:'linear'
-  })
-  // {
-	//   duration: 2,
-  //   opacity:1,
-  //   ease:"rough({strength: 2, points: 16, template: linear, taper: none, randomize: true, clamp: false})"
-  // },'+=0')
-
-  .from('.treeStar', {
-    duration: 3,
-    //skewY:270,
-    scaleY:0,
-    scaleX:0.15,
-    transformOrigin:'50% 50%',
-    ease: 'elastic(1,0.5)'
-  },'-=4')
- .to('.sparkle', {
-	duration: 3,
-    opacity:0,
-    ease:"rough({strength: 2, points: 100, template: linear, taper: both, randomize: true, clamp: false})"
-  },'-=0')
-  .from('.treeBottomMask', {
-    duration: 2,
-    drawSVG:'0% 0%',
-    stroke:'#FFF',
-    ease:'linear',
-    stagger: {
-      each: 6
-    } 
-  },'-=3') 
-
-  // .to('.treeStarOutline', {
-	//   duration: 2,
-  //   opacity:1,
-  //   ease:"rough({strength: 2, points: 16, template: linear, taper: none, randomize: true, clamp: false})"
-  // },'+=0')
-
-//  .to('.tree', {
-//   opacity: 0
-// }, '+=2') 
-
-mainTl.add(starTl, 0)
-gsap.globalTimeline.timeScale(1.5);

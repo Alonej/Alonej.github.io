@@ -639,9 +639,7 @@ $('#intro').find('img').each(function(){
     });
     function pl(){document.getElementById('audio').play()}; 
     pl();
-    let xPos = 0;
-    console.log('//img/bao1.jpg')
-    
+    let xPos = 0;    
     // 循环照片
     gsap.timeline()
     .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
@@ -649,9 +647,8 @@ $('#intro').find('img').each(function(){
       rotateY: (i)=> i*-36,
       transformOrigin: '50% 50% 500px',
       z: -500,
-      // /img/sd2.svg
       // backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
-      backgroundImage:(i)=>'url('+(window.location.origin)+'/2021/12/11/love/bao1.jpg)',
+      backgroundImage:(i)=>'url('+(window.location.origin)+'/2021/12/11/love/bao'+i+'.jpg)',
       backgroundPosition:(i)=>getBgPos(i),
       backfaceVisibility:'hidden'
     })    

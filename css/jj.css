@@ -1026,11 +1026,15 @@ svg{
 /********************************************************/
 /* 循环相片                                         */
 /********************************************************/
+
 .ring, .img {
 	width:100%;
 	height: 100%;
 	transform-style: preserve-3d;
 	user-select:none;
+	/* background-repeat:no-repeat; */
+	background-size:cover;
+	/* -moz-background-size:100% 100%; */
 }
 .stage {
 	width:100%;
@@ -1048,16 +1052,26 @@ svg{
 .stage div,.stage svg {
 	position: absolute;		
 }
-
-.imgBox {
-	perspective: 2000px;
-	width: 300px;
-	height: 400px;  
-	left:50%;
-	top:50%;
-	transform:translate(-50%,-50%);
+@media (max-width:2000px) {
+	.imgBox {
+		perspective: 2000px;
+		width: 300px;
+		height: 400px;  
+		left:50%;
+		top:50%;
+		transform:translate(-50%,-50%);
+	}
 }
-
+@media (max-width:767px) {
+	.imgBox {
+		perspective: 2000px;
+		width: 200px;
+		height: 300px;  
+		left:50%;
+		top:50%;
+		transform:translate(-50%,-50%);
+	}
+}
 /********************************************************/
 /* Video Hero                                           */
 /********************************************************/

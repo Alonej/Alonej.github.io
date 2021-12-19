@@ -199,7 +199,6 @@
 
 
 
-
             
                 <div class="all">
     <!-- <div class="svgTree"> -->
@@ -295,6 +294,180 @@
     </svg>
     <!-- </div> -->
 </div>
+<div class="clear"></div>
+<div class="stage">
+    <div class="imgBox">
+        <div class="ring">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+        </div>
+    </div>
+</div>
+
+                <script type="demo">
+    for(p in a)a[p[0]+(p[6]||'')]=a[p];
+    var M=Math,
+    C=M.cos,
+    S=M.sin,
+    R=M.random,
+    T=0,x=[],
+    y=[],
+    W=innerWidth,H=innerHeight,
+    L=2047,Z=100,V=20,N=511,M=1337;
+    c.width=W,
+    b.style.overflow='hidden',
+    b.style.margin='0px',
+    c.height=H;
+    g='globalAlpha';
+    h='fillStyle';
+    for(i=N;i--;){
+      x[i]=L*R();y[i]=L*R()
+    }
+    setInterval(
+      function(){
+        T+=1/V;
+        a[g]=0.2;
+        function m(c){
+          a[h]=c
+        }
+        <!-- 背景色 -->
+        m('#ee1254');
+        <!-- m('rgba(192, 80, 77, 0)'); -->
+        a.fc(0,0,W,H);
+        a[g]=1;
+        u=1;
+        <!-- 星星，月亮 -->
+        m('#ffc');
+        for(i=0;i<N/3;++i){
+          d=u=(u*M+1)&L;u=(u*M+1)&L;
+          if(C(T*Z+i)<0.5){
+            a.fx("\u2605",d,u)
+          }
+        }
+        a.ba();
+        <!-- a.arc(2*W/3,H/3,40,0,6.3,1); -->
+        a.ca();
+        a.fill();
+        m('#cfc');
+        B=H-V;
+
+        <!-- 画树 -->
+        for(j=0;j<5;++j){
+          s=90-j*V;
+          a.font=s+"px serif";
+          F=1;
+          <!-- for(i=0;i<W;i+=(F=(F*M)%Z)){ -->
+            <!-- a.fx("\u25B2",i-s/2,B+S(i)*30); -->
+          <!-- } -->
+          B-=s/2;
+        }
+        m('#eef');
+
+        for(i=N;i--;){
+          e=x[i];f=y[i];a.fx("\u06DE",e,f);
+          y[i]=(f+1)%L;x[i]=(e+C(i+T)/3)%L
+        }
+        for(i=N*3;i--;){
+          a.fc((x[i&N]+i)&L,(y[i&N]+i)&L,1,1)
+        }
+        <!-- for(i=W;i--;){ -->
+          <!-- d =Z+V*S(i/Z)+S(i/10);a.fc(i,H-d,1,d) -->
+        <!-- } -->
+      },50
+    );
+</script>
+<script>
+    (
+    function reload(){
+        var doc=document;
+        var header=doc.getElementsByTagName("header")[0];
+        var iframe=doc.createElement("iframe");
+        // doc.body.appendChild(iframe);
+        document.getElementsByClassName('all')[0].appendChild(iframe);
+        var iwin=iframe.contentWindow;
+        var idoc=iframe.contentDocument;
+        idoc.open();
+        idoc.close();
+        idoc.write('<!doctype html><head><meta charset="utf-8"><body>');
+        idoc.head.innerHTML="<style>\n"+"html, body { margin: 0; padding: 0; border: 0; width: 100%; height: 100%; }\n"+"</style>\n";idoc.body.innerHTML="\n\t\t"+"<canvas"+' class="xuehua"'+''+"></canvas>\n"+
+    (true?"<script>\x3c/script>\n":"")+"";
+    var Audio=iwin.Audio;iwin.Audio=function(x){
+        return new Audio(x)
+    };
+    if(true){
+        var canvas=idoc.getElementsByTagName("canvas")[0];
+        iwin.a=canvas.getContext("2d");
+        console.log(canvas.getContext("2d"));
+        iwin.b=idoc.body;
+        iwin.c=canvas;
+        var p2d=iwin.Path2D;
+        function wrap(ctx){
+        var fill=ctx.fill,clip=ctx.clip,stroke=ctx.stroke;
+        ctx.scale=ctx.scale;
+        ctx.drawFocusIfNeeded=ctx.drawFocusIfNeeded;
+        ctx.ellipse=ctx.ellipse;
+        ctx.fill=function(r){
+            fill.call(ctx,r==="evenodd"?"evenodd":"nonzero")
+        };
+        ctx.stroke=function(p){
+            if(p&&p2d&&p instanceof p2d)stroke.call(ctx,p);
+            else stroke.call(ctx)
+        };
+        ctx.clip=function(p){
+            if(p&&p2d&&p instanceof p2d)clip.call(ctx,p);
+            else clip.call(ctx)
+        };return ctx
+        }
+        if(false){
+        var cvs=iwin.c;
+        var cNode=cvs.cloneNode;
+        cvs.cloneNode=function(){
+            var clone=cNode.apply(cvs,arguments);
+            var cloneGet=clone.getContext;clone.getContext=function(){
+            return wrap(cloneGet.call(clone,"2d"))
+            };
+            return clone
+        };
+        var get=cvs.getContext;
+        cvs.getContext=function(){
+            return wrap(get.call(cvs,"2d"))
+        }
+        }
+        if(true)wrap(iwin.a)
+    }
+    idoc.body.clientWidth;
+    var demo=idoc.createElement("script");
+    var scrpt=doc.querySelector('script[type="demo"]').textContent.replace(/m.location=m.location;/,"top.reload();");
+    if(false)scrpt="A=0,B=0;"+scrpt;
+    demo.textContent=scrpt;
+    idoc.body.appendChild(demo);
+    idoc.close();
+    iframe.contentWindow.focus();
+    var r=doc.createElement("div");
+    r.innerHTML="&#8635;";
+    r.className="button r";
+    r.title="restart just the demo (local, without remote fetch)";
+    window.reload=r.onclick=function(){
+        doc.body.removeChild(iframe);
+        r.parentElement.removeChild(r);
+        iframe=null;r=null;idoc=null;
+        header=null;reload()
+    };
+    var firstLine=doc.getElementsByTagName("div")[0];
+    console.log(r);
+    console.log(firstLine);
+    // header.insertBefore(r,firstLine)
+    }
+    )();
+</script>
             
             <div class="clearfix"></div>
             <hr class="nogutter">
@@ -452,6 +625,7 @@ $('#intro').find('img').each(function(){
 </script>
 
 
+
   <script src='/js/gsap.min.js'></script>
   <script src='/js/MorphSVGPlugin3.min.js'></script> 
   <script src='/js/DrawSVGPlugin3.min.js'></script>
@@ -465,7 +639,73 @@ $('#intro').find('img').each(function(){
     });
     function pl(){document.getElementById('audio').play()}; 
     pl();
-  </script>
+    let xPos = 0;
+    console.log('//img/bao1.jpg')
+    
+    // 循环照片
+    gsap.timeline()
+    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
+    .set('.img',  { // apply transform rotations to each image
+      rotateY: (i)=> i*-36,
+      transformOrigin: '50% 50% 500px',
+      z: -500,
+      // /img/sd2.svg
+      // backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
+      backgroundImage:(i)=>'url('+(window.location.origin)+'/2021/12/11/love/bao1.jpg)',
+      backgroundPosition:(i)=>getBgPos(i),
+      backfaceVisibility:'hidden'
+    })    
+    .from('.img', {
+      duration:1.5,
+      y:200,
+      opacity:0,
+      stagger:0.1,
+      ease:'expo'
+    })
+    .add(()=>{
+      $('.img').on('mouseenter', (e)=>{
+        let current = e.currentTarget;
+        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
+      })
+      $('.img').on('mouseleave', (e)=>{
+        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
+      })
+    }, '-=0.5')
+
+    $(window).on('mousedown touchstart', dragStart);
+    $(window).on('mouseup touchend', dragEnd);
+          
+
+    function dragStart(e){ 
+      if (e.touches) e.clientX = e.touches[0].clientX;
+      xPos = Math.round(e.clientX);
+      gsap.set('.ring', {cursor:'grabbing'})
+      $(window).on('mousemove touchmove', drag);
+    }
+
+
+    function drag(e){
+      if (e.touches) e.clientX = e.touches[0].clientX;    
+
+      gsap.to('.ring', {
+        rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
+        onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
+      });
+      
+      xPos = Math.round(e.clientX);
+    }
+
+
+    function dragEnd(e){
+      $(window).off('mousemove touchmove', drag);
+      gsap.set('.ring', {cursor:'grab'});
+    }
+
+
+    function getBgPos(i){ //returns the background-position string to create parallax movement in each image
+      return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
+    }
+    </script>
 
 
       

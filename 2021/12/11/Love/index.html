@@ -294,160 +294,73 @@
     </svg>
     <!-- </div> -->
 </div>
-<style>
-    /* body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    } */
-    .imgBox {
-    width: 400px;
-    height: 267px;
-    margin: 16px;
-    box-shadow: 0 0 40px 30px rgba(0,0,0, .2);
+<!-- <style>
+    /********************************************************/
+    /* 循环相片                                         */
+    /********************************************************/
+    .ring, .img {
+        width:100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        user-select:none;
+        /* background-repeat:no-repeat; */
+        background-size:cover;
+        /* -moz-background-size:100% 100%; */
     }
-
-    img {
-    max-width: 100%;
+    .stage {
+        width:100%;
+        height: 500px;
+        transform-style: preserve-3d;
+        user-select:none;
     }
-
-    .image {
-    position: absolute;
-    transform-origin: 100% 100%;
+    .stage {
+        overflow:hidden;
+        background:rgb(220,225,213,0);
+        position: relative;
+        /* top: 50%； */
     }
-    .text {
-    position: absolute;
-    top: 10%;
-    right: -15%;
-    color: black;
-    background-color: white;
-    padding: 10px 20px;
-    font-family: 'Sriracha', cursive;
-    letter-spacing: 1px;
-    font-size: 20px;
-    border-radius: 5px;
+    
+    .stage div,.stage svg {
+        position: absolute;		
     }
-    .button {
-    padding: 8px 10px;
-    font-size: 32px;
-    background: transparent;
-    outline: none;
-    border: 3px solid black;
-    cursor: pointer;
-    color: black;
+    @media (max-width:2000px) {
+        .imgBox {
+            perspective: 2000px;
+            width: 300px;
+            height: 400px;  
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+        }
     }
-
-    .image {
-    z-index: 0;
+    @media (max-width:767px) {
+        .imgBox {
+            perspective: 2000px;
+            width: 200px;
+            height: 300px;  
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+        }
     }
-    .image-1 {
-    z-index: 2;
-    }
-    .image-2 {
-    z-index: 1;
-    }
-    .image-5 {
-    z-index: -1;
-    }
-
 </style>
-<div class="imgBox">
-    <div class="image image-1">
-    <img src="https://images.unsplash.com/photo-1559584039-6a7f832b5767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80" alt="image 1"/>
-      <h2 class="text">Image 1</h2>
+<div class="clear"></div>
+<div class="stage">
+    <div class="imgBox">
+        <div class="ring">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+        </div>
     </div>
-    
-    <div class="image image-2">
-    <img  src="https://source.unsplash.com/vRkiYoCeN2g/400x267" alt="image 2" />
-      <h2 class="text">Image 2</h2>
-    </div>
-    
-    <div class="image image-3" >
-      <img src="https://source.unsplash.com/WDBUAblF48U/400x267" alt="image 3" />
-      <h2 class="text">Image 3</h2>
-    </div>
-    
-    <div class="image image-4">
-      <img  src="https://source.unsplash.com/jumNGn7kBl0/400x267" alt="image 4" />
-      <h2 class="text">Image 4</h2>
-    </div>
-    
-    <div class="image image-5" >
-      <img src="https://source.unsplash.com/ocku3zjNM7k/400x267" alt="image 5" />
-      <h2 class="text">Image 5</h2>
-    </div>
-  </div>
-  <button role="button" class="button button-next" onClick="nextAnimation(event)">></button>
-
-        <!-- <style>
-            /********************************************************/
-            /* 循环相片                                         */
-            /********************************************************/
-            .ring, .img {
-                width:100%;
-                height: 100%;
-                transform-style: preserve-3d;
-                user-select:none;
-                /* background-repeat:no-repeat; */
-                background-size:cover;
-                /* -moz-background-size:100% 100%; */
-            }
-            .stage {
-                width:100%;
-                height: 500px;
-                transform-style: preserve-3d;
-                user-select:none;
-            }
-            .stage {
-                overflow:hidden;
-                background:rgb(220,225,213,0);
-                position: relative;
-                /* top: 50%； */
-            }
-            
-            .stage div,.stage svg {
-                position: absolute;		
-            }
-            @media (max-width:2000px) {
-                .imgBox {
-                    perspective: 2000px;
-                    width: 300px;
-                    height: 400px;  
-                    left:50%;
-                    top:50%;
-                    transform:translate(-50%,-50%);
-                }
-            }
-            @media (max-width:767px) {
-                .imgBox {
-                    perspective: 2000px;
-                    width: 200px;
-                    height: 300px;  
-                    left:50%;
-                    top:50%;
-                    transform:translate(-50%,-50%);
-                }
-            }
-        </style>
-        <div class="clear"></div>
-        <div class="stage">
-            <div class="imgBox">
-                <div class="ring">
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                </div>
-            </div>
-        </div> -->
+</div> -->
 
 
                 <script type="demo">
@@ -777,7 +690,8 @@ $('#intro').find('img').each(function(){
     });
     function pl(){document.getElementById('audio').play()}; 
     pl();
-    let xPos = 0;    
+
+    // let xPos = 0;    
     // 循环照片
     // gsap.timeline()
     // .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
@@ -840,54 +754,9 @@ $('#intro').find('img').each(function(){
     // function getBgPos(i){ //returns the background-position string to create parallax movement in each image
     //   return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
     // }
-    // </script>
-
-    <script>
-      let images = document.querySelectorAll('.image');
-      const root = document.documentElement;
-      const elements = ['.image-1', '.image-2', '.image-3', '.image-4', '.image-5']
-      const totalImages = images.length;
-
-      let currentImage = 1;
-      let nextImage = currentImage + 1;
-      let upcomingImage =  nextImage + 1;
-      
-      function filterActiveImages(image1, image2) {
-        const filteredResult = elements.filter((element) => element !== image1 && element !== image2)
-        return filteredResult;
-      }
-
-      function slideImage(currentImage,nextImage, upcomingImage ) {
-        let tl = gsap.timeline({defaults: {duration: 0.8, ease: Power1.easeInOut}});
-        tl.to(`.image-${currentImage}`, {rotation: -10, xPercent: -100})
-        .to(`.image-${currentImage}`, {rotation: 0, xPercent: 0})
-        .to(`.image-${nextImage}`, {zIndex: 2 }, "-=1.6")
-        .to(`.image-${currentImage}`, {zIndex: -1}, "-=1.6")
-        .to(`.image-${upcomingImage}`, {zIndex: 1}, "-=1.6")
-        .to(filterActiveImages(`.image-${nextImage}`,`.image-${currentImage}`), {zIndex:0}, "-=2.4")
-
-        return tl;
-      }
-
-      function nextAnimation () {
-      slideImage(currentImage, nextImage, upcomingImage);
-        
-      currentImage = nextImage;
-        nextImage = currentImage - 1;
-        
-        if (currentImage === 1) {
-          nextImage = totalImages
-        }  
-          
-        if (nextImage === 1) {
-          upcomingImage = totalImages
-        }  else {
-          upcomingImage = nextImage - 1;
-        }
-      }
-
-
+    
     </script>
+
 
 
       

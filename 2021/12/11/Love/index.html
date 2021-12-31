@@ -365,7 +365,12 @@
                 if(dd<8){
                     randomNum = randomFun(num)
                 }else{
-                    randomNum = 6
+                    var dd = Math.floor((Math.random()*10)+1);
+                    if(dd<9){
+                        randomNum = randomFun(num)
+                    }else{
+                        randomNum = 6
+                    }
                 }
             }
             $(".resultNums").html(randomNum);
@@ -379,20 +384,34 @@
     }, 2000);
 
     function randomFun(num){
-        if(num < 6){
+        if(num < 7){
             num = 4 ? Math.floor((Math.random()*10)+1) > 5 : 5;
-        }else if(num < 8){
-            num = 1 ? Math.floor((Math.random()*10)+1) > 5 : 2;
-        }else if(num < 9){
-            num = 3
-        }else if(num < 10){
+        }else if(num == 7){
             var dd = Math.floor((Math.random()*10)+1);
-            if(dd<4){
-                num = 7
-            }else if(dd<7){
-                num = 8
+            if(dd<5){
+                num = 4 ? Math.floor((Math.random()*10)+1) > 5 : 5;
             }else{
-                num = 9
+                num = 1 ? Math.floor((Math.random()*10)+1) > 5 : 2;
+            }
+        }else if(num == 8){
+            var dd = Math.floor((Math.random()*10)+1);
+            if(dd<6){
+                num = 4 ? Math.floor((Math.random()*10)+1) > 5 : 5;
+            }else{
+                num = 3
+            }
+        }else if(num == 9){
+            var dd = Math.floor((Math.random()*10)+1);
+            if(dd<7){
+                num = 4 ? Math.floor((Math.random()*10)+1) > 5 : 5;
+            }else{
+                if(dd<4){
+                    num = 7
+                }else if(dd<7){
+                    num = 8
+                }else{
+                    num = 9
+                }
             }
         }
         return num;

@@ -1025,6 +1025,95 @@ svg{
 }
 .clear{clear:both;}
 
+.prizeBox{
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: auto;
+	height: 400px;
+	border: 1px solid #f7fafa;
+}
+.prizeBox .choujiang{
+	position: absolute;
+	background-color: #59acf0;
+	color: #f7f3f3;
+	border: 0;
+	width: 80px;
+	height: 30px;
+	top: 80%;
+}
+.prizeBox .choujiang:hover{
+	background-color: #082567;
+}
+.choujiang:active {
+	background-color: #3e8e41;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+  }
+.prizeBox .jiandu{
+	position: absolute;
+	font-size: 2px;
+	color: black;
+	bottom: 2px;
+	right: 2%;
+}
+.prizeBox .result{
+	width: 20%;
+	position: absolute;
+	font-size: 20px;
+	color: yellow;
+	bottom: 39px;
+	right: 5%;
+}
+.jiaoyan {
+	display: flex;
+	justify-content: center;
+	flex-direction:column;
+	position: absolute;
+	top: 86%;
+}
+.jiaoyan div{
+	margin: 0;
+	text-align: center;
+	color: black;
+}
+.prize {
+	display: flex;
+	/* justify-content: center; */
+	justify-content:space-around;
+	align-items:center;
+	flex-wrap:wrap;
+	position: relative;
+	width: 90%;
+	height: 70%;
+	border: 1px solid #4097ee;
+	top: 5%;
+	
+}
+.prize .pr{
+	width: 100px;
+	height: 25px;
+	border: 1px solid #4097ee;
+	color: black;
+	text-align: center;
+	margin: auto
+}
+.prize .a{
+	background-color: #ff7300;
+}
+
+.prize .b {
+	background-color: #7400a1;
+}
+.prize .c {
+	background-color: #7b68ee;
+}
+.prize .d {
+	background-color: #e6d933;
+}
+.prize .e {
+	background-color:white;
+}
 /********************************************************/
 /* Video Hero                                           */
 /********************************************************/

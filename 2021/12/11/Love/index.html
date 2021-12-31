@@ -294,6 +294,110 @@
     </svg>
     <!-- </div> -->
 </div>
+<div class="prizeBox" >
+    <div class="prize" >
+        <div class="pr d p1">炸鸡券</div>
+        <div class="pr d p2">奶茶券</div>
+        <div class="pr c p3">夜宵套餐券</div>
+        <div class="pr e p4">抱抱券</div>
+        <div class="pr e p5">亲亲券</div>
+        <div class="pr a p6">为所欲为券</div>
+        <div class="pr b p7">原谅券</div>
+        <div class="pr b p8">反悔券</div>
+        <div class="pr b p9">真心话券</div>
+    </div>
+    <button class="choujiang">抽奖</button>
+    <div class="jiaoyan">
+        <div>抽奖次数: <span class="cishu">1</span>次</div>
+        <div>时间 <span class="shijian">2021-12-30 21:48:00</span></div>
+    </div>
+    <div class="result">中奖号码:  <span class="resultNums"></span></div>
+    <div class="jiandu">*请在刘杰监督下进行抽奖，自行抽取无效</div>
+</div>
+<script>
+    function dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+            "Y+": date.getFullYear().toString(),        // 年
+            "m+": (date.getMonth() + 1).toString(),     // 月
+            "d+": date.getDate().toString(),            // 日
+            "H+": date.getHours().toString(),           // 时
+            "M+": date.getMinutes().toString(),         // 分
+            "S+": date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            };
+        };
+        return fmt;
+    }
+    setInterval("getTime()",1000);
+    function getTime(){
+        let date = new Date();
+        $(".shijian").html(dateFormat("YYYY-mm-dd HH:MM:SS", date));
+    }
+    var nums = 0;
+    var xunhuanNums = 0
+    var dianliang = null
+    var randomNum = 0
+    $(".cishu").html(nums);
+    $(".prizeBox").on("click",".choujiang",function(){
+        $('.pr').show();
+        $('.choujiang').attr('disabled',"true");
+        xunhuanNums = 0
+        nums = nums + 1
+        $(".cishu").html(nums);
+        dianliang = setInterval("xunhuan()",300);
+    })
+    function xunhuan(){
+        randomNum = Math.floor((Math.random()*10)+1)
+        xunhuanNums = xunhuanNums + 1
+        $(".resultNums").html(randomNum);
+    }
+    setInterval(function(){
+        if(xunhuanNums > 30){
+            num = randomFun(randomNum);
+            if(num == 10){
+                var dd = Math.floor((Math.random()*10)+1);
+                if(dd<8){
+                    randomNum = randomFun(num)
+                }else{
+                    randomNum = 6
+                }
+            }
+            $(".resultNums").html(randomNum);
+            var chirld = ".p"+randomNum
+            $('.pr').hide();
+            $(chirld).show();
+            clearInterval(dianliang);
+            $('.choujiang').removeAttr("disabled"); 
+        }
+        //do whatever here..
+    }, 2000);
+
+    function randomFun(num){
+        if(num < 6){
+            num = 4 ? Math.floor((Math.random()*10)+1) > 5 : 5;
+        }else if(num < 8){
+            num = 1 ? Math.floor((Math.random()*10)+1) > 5 : 2;
+        }else if(num < 9){
+            num = 3
+        }else if(num < 10){
+            var dd = Math.floor((Math.random()*10)+1);
+            if(dd<4){
+                num = 7
+            }else if(dd<7){
+                num = 8
+            }else{
+                num = 9
+            }
+        }
+        return num;
+    }
+</script>
 <!-- <style>
     /********************************************************/
     /* 循环相片                                         */
